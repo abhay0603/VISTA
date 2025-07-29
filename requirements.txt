@@ -1,0 +1,9 @@
+pandas
+google-generativeai
+gradio==5.31.0
+matplotlib
+seaborn
+numpy
+nltk
+plotly
+python-dotenv
