@@ -21,38 +21,8 @@ VISTA performs the following tasks:
 
 Here's how VISTA works internally:
 
-```plantuml
-@startuml VISTA_Architecture
+<img width="1876" height="723" alt="image" src="https://github.com/user-attachments/assets/129def8b-ac7e-498b-8268-d64156f48523" />
 
-title VISTA - AI Lead Analyzer Architecture
-
-actor User
-
-User -> UI : Upload CSV\nEnter Product Details & ICP
-UI -> Preprocessing : Read CSV\nExtract headers & sample rows
-Preprocessing -> StatsGenerator : Compute column statistics
-StatsGenerator --> LLM_PromptBuilder : Provide summary data
-LLM_PromptBuilder -> GeminiLLM : Call Gemini API\nwith system prompt
-GeminiLLM -> RuleEngine : Return scoring rules\n(JSON format)
-RuleEngine -> ScoringLogic : Apply rules to dataset
-ScoringLogic -> OutputGenerator : Generate labeled lead scores
-OutputGenerator -> Plotter : Create interactive Plotly chart
-OutputGenerator -> Downloader : Generate downloadable CSVs
-
-Plotter -> UI : Display lead distribution chart
-Downloader -> UI : Allow CSV downloads
-RuleEngine -> UI : Display raw JSON logic
-
-note right of GeminiLLM
-Google Gemini Model:
-- Generates scoring logic
-- Interprets product + ICP context
-end note
-
-@enduml
-```
-
-> 💡 You can render this diagram using [PlantUML](https://www.plantuml.com/plantuml) or a compatible tool like VS Code with the PlantUML extension.
 
 ---
 
@@ -113,51 +83,3 @@ You’ll see:
 
 ---
 
-## 📦 Optional: Local Installation
-
-```bash
-git clone https://github.com/yourusername/vista.git
-cd vista
-pip install -r requirements.txt
-```
-
-Create a `.env` file and set your Gemini API key:
-
-```
-GOOGLE_API_KEY=your_gemini_key_here
-```
-
-Then run the app:
-
-```bash
-python app.py
-```
-
----
-
-## 📁 File Structure
-
-```
-.
-├── app.py                      # Main Gradio app
-├── synthetic_dataset.csv       # Sample input file
-├── requirements.txt
-├── README.md
-└── docs/
-    └── vista_architecture.png  # (Optional) Architecture diagram
-```
-
----
-
-## 📝 License
-
-This project is licensed under the **MIT License**. Feel free to fork, contribute, and build on top of it.
-
----
-
-## 👨‍💻 Maintainers
-
-- Abhay Kumar – [agkumar2002@gmail.com](mailto:agkumar2002@gmail.com)
-- Micronova AI Battalion
-
----
